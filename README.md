@@ -1,16 +1,11 @@
 <div>
   <h1 align="center">
-    Bounties
+    Quizzes
   </h1>
   <h4 align="center">
-    🎯 Open-Source Projects Feed to easily search on an Organization set of issues, pull requests and any relevant tickets
+    🎯 Open-Source Projects Feed to organize and study with custom random quizzes.
   </h4>
 </div>
-
-## Motivation
-
-Have a ease to deploy way to summarize available issues for collaboration
-on the Open Source.
 
 ## Development
 
@@ -31,10 +26,10 @@ pnpm run dev
 
 [1]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
 
-### Architecture
+### Wireframe - Template 
 
 <div align="center">
-  <img src="./docs/arch.png" />
+  <img src="./docs/quiz.png" />
 </div>
 
 ## License
