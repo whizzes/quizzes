@@ -1,7 +1,5 @@
 <script>
-	export const ssr = false;
-
-	import '../app.css';
+  import '../app.css';
 </script>
 
 <slot />

@@ -12,7 +12,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: false
 
 jobs:
@@ -41,7 +41,7 @@ jobs:
           BASE_PATH: '/'
         run: |
           npm run build
-          touch build/.nojekyll
+          touch ./build/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
