@@ -3,19 +3,16 @@
         <div class="m-auto max-w-[1200px] p-16 bg-neutral-50 rounded overflow-hidden shadow-lg">
 
             <!-- svelte-ignore a11y-missing-attribute -->
-            <img alt="Quiz-books-study-girl" class="h-auto max-h-[360px] max-w-full rounded-full m-auto" src="https://theespressoedition.com/wp-content/uploads/2022/04/IMG_1841.jpg"/>
-            <div class="lg:text-5xl sm:text-3xl text-3xl font-extrabold text-center pt-10 ">
-                <h1 class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
-                    Quizzes
-                </h1>
+            <div class="text-xl font-extrabold text-left pt-10 ">
+                <input type="text" class="mt-5 py-5 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="Question" placeholder="Agregar Pregunta"/>
             </div>
             
             <div class="pt-20">
                 <button type="button" class="w-full max-w-2/3 py-4 px-4 text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 font-medium rounded-lg text-lg px-5 text-center mr-2 mb-2 ">
-                    Crear Quiz
+                    Agregar Pregunta
                 </button>
                 <button type="button" class="w-full max-w-2/3 py-4 px-4 text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-lg px-5 text-center mr-2 mb-2">
-                    Cargar Quiz
+                    Completado
                 </button>
             </div>
         </div>
