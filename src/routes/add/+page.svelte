@@ -5,7 +5,6 @@
     <div
       class="m-auto max-w-[1200px] p-16 bg-neutral-50 rounded overflow-hidden shadow-lg"
     >
-      <!-- svelte-ignore a11y-missing-attribute -->
       <div class="text-xl font-extrabold text-left pt-10">
         <input
           type="text"

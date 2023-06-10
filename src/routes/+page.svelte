@@ -5,7 +5,6 @@
     <div
       class="m-auto max-w-[1200px] p-16 bg-neutral-50 rounded overflow-hidden shadow-lg"
     >
-      <!-- svelte-ignore a11y-missing-attribute -->
       <img
         alt="Quiz-books-study-girl"
         class="h-auto max-h-[360px] max-w-full rounded-full m-auto"
