@@ -1,7 +1,7 @@
 <script lang="ts">
   import Card from '$lib/components/Card.svelte';
   import View from '$lib/components/View.svelte';
-  import { constants } from '$lib/constants'
+  import { constants } from '$lib/constants';
   import { encodeBase64 } from '$lib/utils/b64';
 
   import type { Question } from '$lib/types';
@@ -18,7 +18,6 @@
   questionNumb = questionEntries.length + 1;
 
   function handleSubmit() {
-
     questionEntries.push({
       question,
       image: activeImage
@@ -43,9 +42,9 @@
 
   function startQuiz() {
     //TODO: check
-    //if(question) questionEntries.push(question) && localStorage.setItem(constants.questionsLt, JSON.stringify(questionEntries)); 
+    //if(question) questionEntries.push(question) && localStorage.setItem(constants.questionsLt, JSON.stringify(questionEntries));
     //sessionStorage.setItem(constants.questionSt, questionEntries[0]);
-    
+
     localStorage.setItem('Questions', JSON.stringify(questionEntries));
   }
 </script>
@@ -98,9 +97,9 @@
             : 'bg-gradient-to-r from-pink-100 via-pink-200 to-pink-300'}
         hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300
         dark:focus:ring-pink-800 font-medium rounded-lg text-lg px-5 text-center mr-2 mb-2"
-          disabled={!question }
+          disabled={!question}
         >
-         {constants.addQuestion}
+          {constants.addQuestion}
         </button>
         <button
           type="button"
