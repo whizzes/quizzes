@@ -74,12 +74,12 @@
             />
           </div>
           <button
-            class="cursor-pointer border p-4 w-full rounded-lg text-center text-gray-700 text-md"
+            class="cursor-pointer border flex justify-center items-center p-4 w-full h-[450px] overflow-hidden rounded-lg text-center text-gray-700 text-md"
             type="button"
             on:click={() => inputEl?.click()}
           >
             {#if typeof activeImage === 'string'}
-              <img src={activeImage} alt="Preview" />
+              <img src={activeImage} class="h-full" alt="Preview" />
             {:else}
               <strong>{constants.addImg}</strong>
             {/if}

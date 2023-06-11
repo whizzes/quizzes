@@ -33,10 +33,10 @@
   }
 
   function finishQuiz() {
-    if(currentNumb === questionEntries.length - 1) window.location.href = '/#/congrats';
+    if (currentNumb === questionEntries.length - 1)
+      window.location.href = '/#/congrats';
     window.location.href = '/';
   }
-
 </script>
 
 <View>
