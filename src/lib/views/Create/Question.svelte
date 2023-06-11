@@ -3,8 +3,12 @@
   import View from '$lib/components/View.svelte';
   import { constants } from '$lib/constants';
   import { encodeBase64 } from '$lib/utils/b64';
+  import { quizStore } from '$lib/stores/QuizStore';
 
   import type { Question } from '$lib/types';
+
+  // The params prop contains values matched from the URL
+  export let params: { id: string } = { id: '' };
 
   let question = '';
   let questionNumb = 0;
@@ -18,11 +22,11 @@
   questionNumb = questionEntries.length + 1;
 
   function handleSubmit() {
-    questionEntries.push({
+    quizStore.appendQuestion(params.id, {
       question,
       image: activeImage
     });
-    localStorage.setItem('Questions', JSON.stringify(questionEntries));
+    quizStore.save();
     questionNumb = questionNumb + 1;
     question = '';
     activeImage = undefined;
@@ -40,12 +44,13 @@
     activeImage = base64;
   }
 
-  function startQuiz() {
-    //TODO: check
-    //if(question) questionEntries.push(question) && localStorage.setItem(constants.questionsLt, JSON.stringify(questionEntries));
-    //sessionStorage.setItem(constants.questionSt, questionEntries[0]);
-
-    localStorage.setItem('Questions', JSON.stringify(questionEntries));
+  async function startQuiz() {
+    quizStore.appendQuestion(params.id, {
+      question,
+      image: activeImage
+    });
+    quizStore.save();
+    window.location.href = `/#/quiz/${params.id}`;
   }
 </script>
 
