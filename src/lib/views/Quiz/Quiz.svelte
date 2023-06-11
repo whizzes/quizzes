@@ -33,10 +33,10 @@
 
   function finishQuiz() {
     if (currentNumb === questionEntries.length) {
-      window.location.href = '/#/congrats'
+      window.location.href = '/#/congrats';
     } else {
       window.location.href = '/';
-    };
+    }
   }
 </script>
 

@@ -5,7 +5,6 @@
   function comeBack() {
     window.location.href = '/';
   }
-
 </script>
 
 <View>
@@ -32,17 +31,15 @@
         class="h-auto max-h-[360px] max-w-full rounded-full m-auto"
         src="https://cdn.shopify.com/s/files/1/0754/5123/products/5796d009133ed42dea65331f6293cd9e_1024x1024.png?v=1535667531"
       />
-      
+
       <p class="text-center">
         Te deseamos ¡Mucho exito en tu futuro brillante! 👏👏🥳
       </p>
-
 
       <p class="text-center italic font-semibold text-xl">
         "Cada logro comienza con la decisión de intentarlo - Gail Denvers"
       </p>
 
-    
       <div class="row-start-5 h-full">
         <button
           type="button"
