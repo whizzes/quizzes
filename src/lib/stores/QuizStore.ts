@@ -1,7 +1,8 @@
+import type { ID, Question, Quiz } from '$lib/types';
+import type { Readable, Subscriber, Writable } from 'svelte/store';
 import { derived, get, writable } from 'svelte/store';
 
-import type { Subscriber, Readable, Writable } from 'svelte/store';
-import type { ID, Question, Quiz } from '$lib/types';
+import { shuffle } from '$lib/utils/shuffle';
 
 export type QuizStoreMethods = {
   appendQuestion(id: ID, question: Question): void;
@@ -67,9 +68,12 @@ export class QuizStore {
 
   public findQuiz(id: ID): Quiz {
     const inner = get(this._inner);
-
     // TODO: Handle invalid id
-    return inner.quizzes[id];
+
+    const quiz = inner.quizzes[id];
+    shuffle(quiz.questions);
+
+    return quiz;
   }
 
   public save(): void {

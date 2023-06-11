@@ -45,11 +45,13 @@
   }
 
   async function startQuiz() {
-    quizStore.appendQuestion(params.id, {
-      question,
-      image: activeImage
-    });
-    quizStore.save();
+    if (question || activeImage) {
+      quizStore.appendQuestion(params.id, {
+        question,
+        image: activeImage
+      });
+      quizStore.save();
+    }
     window.location.href = `/#/quiz/${params.id}`;
   }
 </script>
