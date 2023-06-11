@@ -4,7 +4,7 @@
 
   let question = '';
   let questionNumb = 0;
-  var questionEntries = JSON.parse(localStorage.getItem('Questions') as string);
+  let questionEntries = JSON.parse(localStorage.getItem('Questions') as string);
 
   if (questionEntries == null) questionEntries = [];
   questionNumb = questionEntries.length + 1;
