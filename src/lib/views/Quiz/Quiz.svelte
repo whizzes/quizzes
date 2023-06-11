@@ -1,37 +1,28 @@
 <script lang="ts">
   import Card from '$lib/components/Card.svelte';
   import View from '$lib/components/View.svelte';
-  //import { shuffle } from '$lib//utils/shuffle'
-  import { constants } from '../../constants';
-  //import { onMount } from 'svelte';
+  import { quizStore } from '$lib/stores/QuizStore';
+  import { constants } from '$lib/constants';
 
-  let quiz = { question: '', image: '' };
+  import type { Question } from '$lib/types';
+
+  // The params prop contains values matched from the URL
+  export let params: { id: string } = { id: '' };
+
+  let currentQuestion: Question = { question: '', image: '' };
   let currentNumb = 1;
-  let questionEntries = JSON.parse(
-    localStorage.getItem(constants.questionsLt) as string
-  );
-
-  // onMount(() => {
-  //   shuffle(questionEntries)
-  //   if(sessionStorage.getItem(constants.questionSt)){
-  //     question = sessionStorage.getItem(constants.questionSt)
-  //   } else {
-  //     question = questionEntries[0]
-  //   }
-  //   JSON.parse(sessionStorage.setItem(constants.questionSt, questionEntries[0]) as unknown as string);
-  // 	//const res = localStorage
-  // });
+  let questionEntries = quizStore.findQuiz(params.id)?.questions;
 
   if (questionEntries == null) questionEntries = [];
 
   function getLastQuestion() {
     currentNumb = currentNumb - 1;
-    quiz = questionEntries[currentNumb - 1];
+    currentQuestion = questionEntries[currentNumb - 1];
   }
 
   function getNextQuestion() {
     currentNumb = currentNumb + 1;
-    quiz = questionEntries[currentNumb - 1];
+    currentQuestion = questionEntries[currentNumb - 1];
   }
 </script>
 
@@ -39,9 +30,9 @@
   <Card>
     <div class="flex text-xl font-extrabold text-left pt-10">
       <p class="text-gray-700 mt-5 py-5 mr-5">
-        {currentNumb}.{quiz.question}
-        {#if typeof quiz.image === 'string'}
-          <img src={quiz.image} alt="Preview" />
+        {currentNumb}.{currentQuestion.question}
+        {#if typeof currentQuestion.image === 'string'}
+          <img src={currentQuestion.image} alt="Preview" />
         {/if}
       </p>
     </div>
