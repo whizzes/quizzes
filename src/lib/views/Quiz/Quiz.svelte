@@ -19,7 +19,6 @@
     quiz = quizStore.findQuiz(params.id);
     currentQuestion = quiz.questions[0];
     questionEntries = quiz.questions;
-    if (questionEntries == null) questionEntries = [];
   });
 
   function getLastQuestion() {
@@ -33,9 +32,11 @@
   }
 
   function finishQuiz() {
-    if (currentNumb === questionEntries.length - 1)
+    if (currentNumb === questionEntries.length) {
       window.location.href = '/#/congrats';
-    window.location.href = '/';
+    } else {
+      window.location.href = '/';
+    }
   }
 </script>
 
@@ -110,12 +111,12 @@
             type="button"
             class="w-full px-4 py-2 text-base text-gray-600 bg-white border-y hover:bg-gray-100"
           >
-            {questionEntries.length - 1}
+            {questionEntries.length}
           </button>
           <button
             on:click={getNextQuestion}
             type="button"
-            disabled={currentNumb === questionEntries.length - 1 && true}
+            disabled={currentNumb === questionEntries.length - 0 && true}
             class="w-full p-4 text-base text-gray-600 bg-white border-t border-b border-r rounded-r-xl hover:bg-gray-100"
           >
             <svg
