@@ -1,4 +1,4 @@
-import type { Question } from "$lib/types";
+import type { Question } from '$lib/types';
 
 // Shuffle -- Algorithm Fisher-Yates
 export function shuffle(array: Question[]) {

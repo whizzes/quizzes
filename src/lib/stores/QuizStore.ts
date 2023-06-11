@@ -69,9 +69,9 @@ export class QuizStore {
   public findQuiz(id: ID): Quiz {
     const inner = get(this._inner);
     // TODO: Handle invalid id
-    
-    const quiz = inner.quizzes[id]
-    shuffle(quiz.questions)
+
+    const quiz = inner.quizzes[id];
+    shuffle(quiz.questions);
 
     return quiz;
   }

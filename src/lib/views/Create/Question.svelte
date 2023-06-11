@@ -45,7 +45,7 @@
   }
 
   async function startQuiz() {
-    if(question || activeImage){
+    if (question || activeImage) {
       quizStore.appendQuestion(params.id, {
         question,
         image: activeImage
