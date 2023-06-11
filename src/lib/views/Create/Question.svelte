@@ -42,6 +42,7 @@
   }
 
   function startQuiz() {
+    //TODO: check
     //if(question) questionEntries.push(question) && localStorage.setItem(constants.questionsLt, JSON.stringify(questionEntries)); 
     //sessionStorage.setItem(constants.questionSt, questionEntries[0]);
     
