@@ -8,12 +8,14 @@
   import Question from '$lib/views/Create/Question.svelte';
   import Quiz from '$lib/views/Quiz/Quiz.svelte';
   import { quizStore } from '$lib/stores/QuizStore';
+  import Congrats from '$lib/views/Congrats/Congrats.svelte';
 
   const routes = {
     '/': Home,
     '/create': Create,
     '/create/:id/question': Question,
     '/quiz/:id': Quiz,
+    '/congrats': Congrats,
     // Catch-all, must be last
     '*': NotFound
   };
