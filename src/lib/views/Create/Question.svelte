@@ -3,11 +3,11 @@
   import View from '$lib/components/View.svelte';
   import { encodeBase64 } from '$lib/utils/b64';
 
-  import type { Quizzes } from '$lib/types';
+  import type { Question } from '$lib/types';
 
   let question = '';
   let questionNumb = 0;
-  let questionEntries: Quizzes.Question[] = JSON.parse(
+  let questionEntries: Question[] = JSON.parse(
     localStorage.getItem('Questions') as string
   );
   let inputEl: HTMLInputElement | null = null;
