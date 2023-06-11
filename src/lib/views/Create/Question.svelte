@@ -1,7 +1,7 @@
 <script lang="ts">
   import Card from '$lib/components/Card.svelte';
   import View from '$lib/components/View.svelte';
-
+  import { constants } from '$lib/constants'
   import { encodeBase64 } from '$lib/utils/b64';
 
   import type { Question } from '$lib/types';
@@ -62,7 +62,7 @@
               type="text"
               class="w-full py-5 rounded-lg border-transparent appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
               name="Question"
-              placeholder="Agregar Pregunta"
+              placeholder={constants.addQuestion}
               bind:value={question}
             />
           </div>
@@ -74,7 +74,7 @@
             {#if typeof activeImage === 'string'}
               <img src={activeImage} alt="Preview" />
             {:else}
-              <strong>Agregar Imagen</strong>
+              <strong>{constants.addImg}</strong>
             {/if}
           </button>
           <input
@@ -97,7 +97,7 @@
             : 'bg-gradient-to-r from-pink-100 via-pink-200 to-pink-300'}
         hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300
         dark:focus:ring-pink-800 font-medium rounded-lg text-lg px-5 text-center mr-2 mb-2"
-          disabled={!question}
+          disabled={!question }
         >
          {constants.addQuestion}
         </button>
