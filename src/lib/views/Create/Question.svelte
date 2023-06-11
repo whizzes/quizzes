@@ -1,31 +1,43 @@
 <script lang="ts">
   import Card from '$lib/components/Card.svelte';
   import View from '$lib/components/View.svelte';
+  import { encodeBase64 } from '$lib/utils/b64';
 
   let question = '';
   let questionNumb = 0;
-  let questionEntries = JSON.parse(localStorage.getItem('Questions') as string);
+  let questionEntries: Quizzes.Question[] = JSON.parse(
+    localStorage.getItem('Questions') as string
+  );
+  let inputEl: HTMLInputElement | null = null;
+  let activeImage: string | undefined;
 
   if (questionEntries == null) questionEntries = [];
   questionNumb = questionEntries.length + 1;
 
   function handleSubmit() {
-    questionEntries.push(question);
+    questionEntries.push({
+      question,
+      image: activeImage
+    });
     localStorage.setItem('Questions', JSON.stringify(questionEntries));
     questionNumb = questionNumb + 1;
     question = '';
+    activeImage = undefined;
   }
 
-  // Shuffle -- Algorithm Fisher-Yates
-  function shuffle(array: string[]) {
-    for (let i = array.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+  async function handleInputFileChange() {
+    const file = inputEl?.files?.[0];
+
+    if (!file) {
+      return null;
     }
+
+    const base64 = await encodeBase64(file);
+
+    activeImage = base64;
   }
 
   function startQuiz() {
-    shuffle(questionEntries);
     localStorage.setItem('Questions', JSON.stringify(questionEntries));
   }
 </script>
@@ -34,16 +46,39 @@
   <Card>
     <form on:submit|preventDefault={handleSubmit}>
       <div class="flex text-xl font-extrabold text-left pt-10">
-        <p class="text-gray-700 mt-5 py-5 mr-5">
-          {questionNumb}.
-        </p>
-        <input
-          type="text"
-          class="mt-5 py-5 rounded-lg border-transparent appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-          name="Question"
-          placeholder="Agregar Pregunta"
-          bind:value={question}
-        />
+        <div class="flex flex-col items-center justify-center space-y-4 w-full">
+          <div class="flex items-center justify-center w-full">
+            <p class="text-gray-700 pr-4">
+              {questionNumb}.
+            </p>
+            <input
+              type="text"
+              class="w-full py-5 rounded-lg border-transparent appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+              name="Question"
+              placeholder="Agregar Pregunta"
+              bind:value={question}
+            />
+          </div>
+          <button
+            class="cursor-pointer border p-4 w-full rounded-lg text-center text-gray-700 text-md"
+            type="button"
+            on:click={() => inputEl?.click()}
+          >
+            {#if typeof activeImage === 'string'}
+              <img src={activeImage} alt="Preview" />
+            {:else}
+              <strong>Agregar Imagen</strong>
+            {/if}
+          </button>
+          <input
+            hidden
+            type="file"
+            class="mt-5 py-5 rounded-lg border-transparent appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            name="File"
+            on:change={handleInputFileChange}
+            bind:this={inputEl}
+          />
+        </div>
       </div>
 
       <div class="pt-20">
