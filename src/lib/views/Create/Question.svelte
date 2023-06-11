@@ -3,6 +3,8 @@
   import View from '$lib/components/View.svelte';
   import { encodeBase64 } from '$lib/utils/b64';
 
+  import type { Quizzes } from '$lib/types';
+
   let question = '';
   let questionNumb = 0;
   let questionEntries: Quizzes.Question[] = JSON.parse(
@@ -85,7 +87,7 @@
         <button
           type="submit"
           class="w-full max-w-2/3 py-4 px-4 text-white
-        {!!question
+        {question
             ? 'bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600'
             : 'bg-gradient-to-r from-pink-100 via-pink-200 to-pink-300'}
         hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300
